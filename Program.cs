@@ -185,7 +185,7 @@ namespace StudentExercises
                 return exercisesCount == 0;
             });
 
-            Console.WriteLine ("These students are not working on an exercise:");
+            Console.WriteLine ("These student(s) are not working on an exercise:");
 
             foreach (var student in studentsWithNoExercises)
             {
@@ -194,11 +194,16 @@ namespace StudentExercises
 
             Console.WriteLine ($"---------------------------------------");
 
+            Console.WriteLine ("These student(s) are working on the most exercise:");
+
             var studentWithMostExercises = students.OrderByDescending (student =>
             {
                 return student.Exercises.Count;
             }).FirstOrDefault ();
 
+            Console.WriteLine ($"{studentWithMostExercises.FirstName} {studentWithMostExercises.LastName}");
+
+            Console.WriteLine ($"---------------------------------------");
             var groups = students.GroupBy (student => student.Cohort.Name);
 
             foreach (var group in groups)
